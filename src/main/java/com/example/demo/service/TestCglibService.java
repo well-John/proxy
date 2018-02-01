@@ -19,6 +19,21 @@ public class TestCglibService {
     public TestCglibService(){
     }
 
+    public DataSource getDataSource() {
+        return dataSource;
+    }
+
+    public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
+    public UserDao getUserDao() {
+        return userDao;
+    }
+
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
 
     public TestCglibService(DataSource dataSource) {
         this.dataSource = dataSource;
@@ -37,7 +52,7 @@ public class TestCglibService {
             user.setName(String.valueOf(10-i));
             userDao.insert(user);
         }
-       /* PUser puser = new PUser();
+        /*PUser puser = new PUser();
         puser.setId(9);
         puser.setSex("男");
         puser.setName("11");

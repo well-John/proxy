@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.dao.UserDao;
 import com.example.demo.entity.MyCglibProxy;
 import com.example.demo.entity.MyJDKProxy;
 import com.example.demo.entity.MyTransactionManager;
@@ -32,9 +33,10 @@ public class AnnotationApplicationTests {
 
 	@Test
 	public void TestCglib() throws Exception{
-		Object object = new TestCglibService(dataSource);
-		TestCglibService testService = (TestCglibService) new MyCglibProxy(myTransactionManager).proxyFor(object);
-		testService.test2();
+		TestCglibService testCglibService = (TestCglibService) new MyCglibProxy(myTransactionManager).proxyFor(TestCglibService.class);
+		testCglibService.setDataSource(dataSource);
+		testCglibService.setUserDao(new UserDao(dataSource));
+		testCglibService.test2();
 	}
 
 }

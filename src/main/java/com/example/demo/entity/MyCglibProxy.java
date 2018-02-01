@@ -19,9 +19,9 @@ public class MyCglibProxy implements MethodInterceptor{
         this.myTransactionManager = myTransactionManager;
     }
 
-    public Object proxyFor(Object object) {
+    public Object proxyFor(Class clazz) {
         Enhancer enhancer = new Enhancer();
-        enhancer.setSuperclass(object.getClass());
+        enhancer.setSuperclass(clazz);
         enhancer.setCallback(this);
         return enhancer.create();
     }
